@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    unless = require('./unless.js'),
     page = require('webpage').create(),
     url = 'http://docs.emmet.io/cheat-sheet/';
     
@@ -6,7 +7,7 @@ var fs = require('fs'),
 page.settings["localToRemoteUrlAccessEnabled"]  = true;
 
 page.open(url, function (status) {
-    var emmetBaseObj = page.evaluate(function() {
+    var emmetBaseObj = page.evaluate(function(unless) {
         var emmetBaseObj = {
             css: '/***\n\n  Replace [":","+"] with ["-","_"]\n\n***/',
             md: '',
@@ -28,20 +29,34 @@ page.open(url, function (status) {
                     key = snippet.querySelector('.ch-snippet__name').innerText,
                     value = snippet.querySelector('.ch-snippet__value').innerText;
 
-                emmetBaseObj.json[sectionTitle].push({
-                    key: key,
-                    value: value
-                });
-                emmetBaseObj.css += '.' + key.replace(':', '-').replace('+', '_').replace(',', '').replace(/\s[a-zA-Z]*/,'')
-                                        + ' { ' + value + ' }\n';
+                key = key.replace(':', '-')
+                         .replace('+', '_')
+                         .replace(',', '')
+                         .replace(/\s[a-zA-Z]*/,'');
+
+                value = value.replace('$', '')
+                             .replace('{', '')
+                             .replace('}', '');
+
+                // emmetBaseObj.json[sectionTitle].push({
+                //     key: key,
+                //     value: value
+                // });
+                if (value.match(/:;|\(\)/) || unless.dictionary[key]) {
+                    emmetBaseObj.css += '/*.' + key + ' { ' + value + ' }*/\n';
+                } else {
+                    emmetBaseObj.css += '.' + key + ' { ' + value + ' }\n';
+                }
+
+
             }
 
         }
         return emmetBaseObj;
-    });
+    }, unless);
     // var emCtn = JSON.stringify();
-    fs.write('base.emmet.css', emmetBaseObj.css, 'w');
+    fs.write('dist/base.emmet.css', emmetBaseObj.css, 'w');
     console.log('Create file success, Please press Ctrl + C to exit !');
     // fs.write('base.js', emCtn, 'w');
-    phantom.exit();
+    phantom.exit(1);
 });
