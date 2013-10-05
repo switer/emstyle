@@ -1,0 +1,25 @@
+{
+  "name": "emmetstyle",
+  "version": "0.0.0",
+  "description": "emmet style-sheet base library",
+  "main": "get.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/switer/emmetstyle.git"
+  },
+  "keywords": [
+    "emmet",
+    "css-base-lib"
+  ],
+  "author": "switer",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/switer/emmetstyle/issues"
+  },
+  "devDependencies": {
+    "phantomjs": "~1.9.2-2"
+  }
+}
