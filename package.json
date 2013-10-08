@@ -15,7 +15,7 @@
     "css-base-lib"
   ],
   "author": "switer",
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/switer/emmetstyle/issues"
   },
