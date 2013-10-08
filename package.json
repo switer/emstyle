@@ -20,6 +20,7 @@
     "url": "https://github.com/switer/emmetstyle/issues"
   },
   "devDependencies": {
-    "phantomjs": "~1.9.2-2"
+    "phantomjs": "~1.9.2-2",
+    "ciment": "~1.0.0"
   }
 }

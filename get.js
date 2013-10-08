@@ -1,5 +1,6 @@
 var fs = require('fs'),
     unless = require('./unless.js'),
+    ciment = require('./node_modules/ciment/ciment.js'),
     page = require('webpage').create(),
     url = 'http://docs.emmet.io/cheat-sheet/';
     
