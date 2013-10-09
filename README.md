@@ -1,9 +1,12 @@
 emmetstyle
 ==========
 
-css base library of emmet style
+Css base library of emmet style.
 
+## Usage
+```html
+<link rel="stylesheet" href="dist/base.emmet.css"/>
+```
 
-### Docs
-
+## Docs
 [emmet-cheat-sheet](http://docs.emmet.io/cheat-sheet/)
