@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "phantomjs": "~1.9.2-2",
-    "ciment": "~1.0.0"
+    "ciment": "~1.0.0",
+    "cssmin": "~0.4.1"
   }
 }

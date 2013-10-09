@@ -1,4 +1,5 @@
 var fs = require('fs'),
+    cssmin = require('./node_modules/cssmin/cssmin.js'),
     unless = require('./unless.js'),
     ciment = require('./node_modules/ciment/ciment.js'),
     page = require('webpage').create(),
@@ -56,7 +57,8 @@ page.open(url, function (status) {
         return emmetBaseObj;
     }, unless);
     // var emCtn = JSON.stringify();
-    fs.write('dist/base.emmet.css', emmetBaseObj.css, 'w');
+    fs.write('dist/emstyle.css', emmetBaseObj.css, 'w');
+    fs.write('dist/emstyle.min.css', cssmin(emmetBaseObj.css), 'w');
     console.log('Create file success, Please press Ctrl + C to exit !');
     // fs.write('base.js', emCtn, 'w');
     phantom.exit(1);
