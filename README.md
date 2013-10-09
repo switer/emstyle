@@ -1,4 +1,4 @@
-emmetstyle
+emstyle
 ==========
 
 CSS base library, using emmet style.It just a css library to name those single style-rule, __for example:__
