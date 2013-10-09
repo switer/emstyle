@@ -1,0 +1,24 @@
+{
+  "name": "emstyle",
+  "version": "1.0.0",
+  "homepage": "https://github.com/switer/emstyle",
+  "authors": [
+    "switer <guankaishe@gmail.com>"
+  ],
+  "description": "CSS base library likes emmet style",
+  "main": "dist/emstyle.css",
+  "keywords": [
+    "CSS",
+    "library",
+    "base",
+    "emmet"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
