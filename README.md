@@ -2,6 +2,11 @@ emmetstyle
 ==========
 
 Css base library of emmet style.
+## Install
+With [bower](https://github.com/bower/bower):
+```bash
+bower install emstyle
+```
 
 ## Usage
 ```html
