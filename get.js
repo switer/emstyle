@@ -12,6 +12,7 @@ page.open(url, function (status) {
     var emmetBaseObj = page.evaluate(function(unless) {
         var emmetBaseObj = {
             css: '/***\n\n  Replace [":","+"] with ["-","_"]\n\n***/',
+            blank: '/***\n\n  Replace [":","+"] with ["-","_"]\n\n***/',
             md: '',
             json: {}
         };
@@ -26,6 +27,7 @@ page.open(url, function (status) {
             }
             emmetBaseObj.json[sectionTitle] = [];
             emmetBaseObj.css += '\n\n/****  ' + sectionTitle + '  ****/\n';
+            emmetBaseObj.blank += '\n\n/****  ' + sectionTitle + '  ****/\n';
             for (var j = 0, len = snippets.length; j < len; j ++) {
                 var snippet = snippets[j],
                     key = snippet.querySelector('.ch-snippet__name').innerText,
@@ -40,14 +42,11 @@ page.open(url, function (status) {
                              .replace('{', '')
                              .replace('}', '');
 
-                // emmetBaseObj.json[sectionTitle].push({
-                //     key: key,
-                //     value: value
-                // });
                 if (value.match(/:;|\(\)/) || unless.dictionary[key]) {
                     emmetBaseObj.css += '/*.' + key + ' { ' + value + ' }*/\n';
                 } else {
                     emmetBaseObj.css += '.' + key + ' { ' + value + ' }\n';
+                    emmetBaseObj.blank += '.' + key + ' { ' + value + ' }\n';
                 }
 
 
@@ -59,6 +58,7 @@ page.open(url, function (status) {
     // var emCtn = JSON.stringify();
     fs.write('dist/emstyle.css', emmetBaseObj.css, 'w');
     fs.write('dist/emstyle.min.css', cssmin(emmetBaseObj.css), 'w');
+    fs.write('dist/emstyle.blank.css', emmetBaseObj.blank, 'w');
     console.log('Create file success, Please press Ctrl + C to exit !');
     // fs.write('base.js', emCtn, 'w');
     phantom.exit(1);
