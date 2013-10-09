@@ -26,4 +26,4 @@ __or use compress file:__
 
 ## TODO
 
-* Create a emstyle cheat sheet
+* Create an emstyle cheat sheet
